@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "AdventOfCode2023Swift",
+    platforms: [.macOS(.v13)],
     targets: [
         .target(
             name: "AdventOfCode2023Swift",
