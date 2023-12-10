@@ -31,12 +31,23 @@ struct XY: AdditiveArithmetic, CustomStringConvertible {
     }
     .filter { $0 != XY(0, 0) }
 
+    static let adjacentDeltas: [XY] = [XY(0, 1), XY(0, -1), XY(-1, 0), XY(1, 0)]
+
     func isOutside(limit: XY) -> Bool {
         x < 0 || x > limit.x || y < 0 || y > limit.y
     }
 
     func allAroundAdjacents(limit: XY) -> [XY] {
         Self.allAroundAdjacentDeltas.map {
+            self + $0
+        }
+        .filter {
+            !$0.isOutside(limit: limit)
+        }
+    }
+    
+    func adjacents(limit: XY) -> [XY] {
+        Self.adjacentDeltas.map {
             self + $0
         }
         .filter {
