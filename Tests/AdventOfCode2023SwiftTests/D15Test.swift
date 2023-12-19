@@ -1,8 +1,6 @@
 @testable import AdventOfCode2023Swift
 import XCTest
 
-import Algorithms
-
 final class D15Test: XCTestCase, DayValidation {
     let day = D15()
     
